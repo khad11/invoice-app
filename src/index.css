@@ -28,7 +28,7 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem
+    --radius: 0.5rem;
   }
   .dark {
     --background: 20 14.3% 4.1%;
@@ -54,11 +54,50 @@
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%
+    --chart-5: 340 75% 55%;
   }
 }
 
 @layer base {
+  @font-face {
+    font-family: "League Spartan";
+    src:
+      url("../public/fonts/") format("woff2"),
+      url("../public/fonts/LeagueSpartan-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "League Spartan";
+    src:
+      url("../public/fonts/LeagueSpartan-Medium.woff2") format("woff2"),
+      url("../public/fonts/LeagueSpartan-Medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "League Spartan";
+    src:
+      url("../public/fonts/LeagueSpartan-ExtraBold.woff2") format("woff2"),
+      url("../public/fonts/LeagueSpartan-ExtraBold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "League Spartan";
+    src:
+      url("../public/fonts/LeagueSpartan-Bold.woff2") format("woff2"),
+      url("../public/fonts/LeagueSpartan-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
   * {
     @apply border-border outline-ring/50;
   }
