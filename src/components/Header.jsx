@@ -3,7 +3,7 @@ import UnversalSheet from "./UnversalSheet";
 
 function Header() {
   return (
-    <div className="flex items-center justify-between">
+    <div className="mx-auto flex max-w-4xl items-center justify-between px-4">
       <div>
         <h1 className="text-3xl font-bold leading-8 -tracking-tight">
           Invoices
