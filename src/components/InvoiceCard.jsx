@@ -6,23 +6,17 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Status from "./Status";
-import { dateFormatter } from "../lib/utils";
 
-function InvoiceCard({
-  id = "sf333",
-  clientName = "johnn Dore",
-  paymentDue = "12.02.1220",
-  total = "1800.90",
-  status = "pending",
-}) {
+import Status from "./Status";
+
+function InvoiceCard({ id, clientName, paymentDue, status, total }) {
   return (
     <Card>
       <CardHeader>
         <CardTitle>#{id}</CardTitle>
         <CardDescription>{clientName}</CardDescription>
       </CardHeader>
-      <CardContent>{dateFormatter(paymentDue)}</CardContent>
+      <CardContent>{paymentDue}</CardContent>
       <CardFooter className="flex items-center justify-between">
         <span>
           {(+total).toLocaleString("en-GB", {
