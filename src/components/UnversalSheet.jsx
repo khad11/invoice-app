@@ -25,7 +25,7 @@ function UnversalSheet({ children }) {
             <SheetTitle className="text-2xl leading-5">New invoices</SheetTitle>
           </SheetHeader>
           <div className="h-full overflow-y-auto pb-20">{children}</div>
-          <div className="justify-betweenn absolute bottom-0 left-0 right-0 flex w-full items-center border-t-2 bg-white p-3">
+          <div className="border-t-1 absolute bottom-0 left-0 right-0 flex w-full items-center justify-between bg-white p-3 dark:bg-[#1E2139]">
             <SheetTrigger className={buttonVariants({ variant: "outline" })}>
               Discard
             </SheetTrigger>
