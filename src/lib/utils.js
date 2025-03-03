@@ -20,6 +20,6 @@ export function dateFormatter(date) {
     "Nov",
     "Dec",
   ];
-  const [year, month, day] = date.split(".");
+  const [year, month, day] = date.split("-");
   return `Due ${day} ${monthShortForm[month - 1]} ${year}`;
 }

@@ -31,7 +31,7 @@ function SideBar() {
 
   return (
     <div className="fixed left-0 right-0 top-0 md:bottom-0 md:h-full md:w-20">
-      <div className="flex h-full items-center justify-between rounded-br-3xl bg-slate-200 shadow-lg dark:bg-slate-900 md:h-full md:flex-col md:justify-between md:rounded-tr-3xl md:border-r-2 md:shadow-none">
+      <div className="flex h-full items-center justify-between bg-gray-100 shadow-xl dark:bg-neutral-900 md:h-full md:flex-col md:justify-between md:rounded-br-3xl md:rounded-tr-3xl md:border-r-2 md:shadow-none">
         <img
           className="h-20 w-20 object-contain"
           src={LogoImage}

@@ -1,61 +1,72 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaChevronDown } from "react-icons/fa6";
 import { FaChevronUp } from "react-icons/fa";
+import { Button } from "./ui/button";
+import { Check, Users } from "lucide-react";
 
 export default function Filter() {
-  const [selectedStatus, setSelectedStatus] = useState(["All"]);
-  // Dropdown ochiq-yopiqligini boshqarish uchun
+  const [statuses, setStatuses] = useState({
+    draft: false,
+    pending: false,
+    paid: false,
+  });
   const [open, setOpen] = useState(false);
+  const [backendFilterRequest, setBackendFilterRequest] = useState("");
 
-  // Statusni almashtirish funksiyasi
-  const toggleStatus = (status, checked) => {
-    setSelectedStatus(
-      status === "All"
-        ? // Agar "All" tanlansa, faqat "All" ni qoldiramiz
-          ["All"]
-        : checked
-          ? // Aks holda belgilangan statuslarni (All'ni olib tashlab) massivga qo‘shamiz
-            selectedStatus.filter((s) => s !== "All").concat(status)
-          : // Yoki o‘chiramiz
-            selectedStatus.filter((s) => s !== status),
-    );
-  };
+  useEffect(() => {
+    let str = "";
+    for (const key in statuses) {
+      if (statuses[key]) {
+        if (str === "") {
+          str += key;
+        } else {
+          str += `|${key}`;
+        }
+      }
+    }
+    setBackendFilterRequest(str);
+  }, [statuses]);
 
-  // Ko'rsatmoqchi bo'lgan statuslar ro'yxati
-  const statuses = ["All", "draft", "pending", "paid"];
+  function handleClick() {
+    setOpen(!open);
+  }
+
+  function handleCheck(status) {
+    setStatuses((prev) => {
+      let finalRresult = null;
+      if (status !== "" && prev[""]) {
+        finalRresult = { ...prev, [status]: !statuses[status], all: false };
+      } else {
+        finalRresult = { ...prev, [status]: !statuses[status] };
+      }
+      return finalRresult;
+    });
+  }
 
   return (
-    <div className="relative inline-block">
-      {/* Trigger tugma */}
-      <button
-        onClick={() => setOpen(!open)}
-        className="flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
-      >
-        Filter <span className="hidden md:flex">by status</span>
-        <span className="ml-3">
-          {open ? <FaChevronUp /> : <FaChevronDown />}
+    <div className="relative w-[150px]">
+      <Button className="w-full" onClick={handleClick} variant="ghost">
+        <span className="flex gap-2">
+          Filter <span className="hidden md:flex">by status</span>
         </span>
-      </button>
 
-      {/* Dropdown ochiq bo'lsa, status ro'yxati ko'rsatiladi */}
+        {open ? <FaChevronUp /> : <FaChevronDown />}
+      </Button>
+
       {open && (
-        <div className="absolute left-0 mt-2 w-40 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5">
-          <ul className="py-1">
-            {statuses.map((status) => {
-              const isChecked = selectedStatus.includes(status);
+        <div className="absolute top-11 z-40 w-full rounded-md p-1 shadow-md">
+          <ul>
+            {Object.entries(statuses).map(([status, check], index) => {
               return (
-                <li
-                  key={status}
-                  className="flex cursor-pointer items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  {/* Checkbox orqali belgilash */}
-                  <input
-                    type="checkbox"
-                    checked={isChecked}
-                    onChange={(e) => toggleStatus(status, e.target.checked)}
-                    className="mr-2"
-                  />
-                  {status}
+                <li key={index}>
+                  <Button
+                    onClick={() => handleCheck(status)}
+                    className="w-full justify-between capitalize"
+                    variant="ghost"
+                  >
+                    {status}
+                    {check && <Check />}
+                  </Button>
                 </li>
               );
             })}
