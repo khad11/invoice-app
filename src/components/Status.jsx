@@ -1,18 +1,19 @@
 import React from "react";
 
-export default function Status({ status = "pending" }) {
+export default function Status({ status }) {
   let baseStyle = "";
   let dotColor = "";
   switch (status) {
     case "pending":
-      baseStyle = "bg-[rbga(255,143,0,0.05)] text-[#FF8F00]";
+      baseStyle = "bg-[rgba(255,143,0,0.05)] text-[#FF8F00]";
       dotColor = "bg-[#FF8F00]";
       break;
     case "paid":
-      baseStyle = "bg-[rbga(51,214,159,0.05)] text-[#33D69F]";
+      baseStyle = "bg-[rgba(51,214,159,0.05)] text-[#33D69F]";
       dotColor = "bg-[#33D69F]";
+      break;
     default:
-      baseStyle = "bg-[rbga(55,59,83,0.05)] text-[#373B53]";
+      baseStyle = "bg-[rgba(55,59,83,0.05)] text-[#373B53]";
       dotColor = "bg-[#373B53]";
   }
   return (
