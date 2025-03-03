@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card";
 
 import Status from "./Status";
+import { dateFormatter } from "../lib/utils";
 
 function InvoiceCard({ id, clientName, paymentDue, status, total }) {
   return (
@@ -16,7 +17,7 @@ function InvoiceCard({ id, clientName, paymentDue, status, total }) {
         <CardTitle>#{id}</CardTitle>
         <CardDescription>{clientName}</CardDescription>
       </CardHeader>
-      <CardContent>{paymentDue}</CardContent>
+      <CardContent>{dateFormatter(paymentDue)}</CardContent>
       <CardFooter className="flex items-center justify-between">
         <span>
           {(+total).toLocaleString("en-GB", {
