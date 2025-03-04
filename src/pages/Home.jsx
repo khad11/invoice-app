@@ -29,7 +29,10 @@ function Home() {
 
   return (
     <>
-      <Header backendFilterRequestG={backendFilterRequestG} />
+      <Header
+        backendFilterRequestG={backendFilterRequestG}
+        count={invoices?.length}
+      />
       <div className="md:ml-28">
         <div className="mx-auto h-[750px] w-full max-w-4xl overflow-y-auto scroll-smooth px-4">
           {!loading && <Invoices /> ? (

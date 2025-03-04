@@ -17,6 +17,7 @@ export default function Filter() {
 
   useEffect(() => {
     let str = "";
+    let count = backendFilterRequest.length;
     for (const key in statuses) {
       if (statuses[key]) {
         if (str === "") {

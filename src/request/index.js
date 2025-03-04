@@ -3,7 +3,6 @@ const baseUrl = "https://json-api.uz/api/project/fn28";
 // get all data
 export async function getAll(route = "/invoices") {
   const req = await fetch(baseUrl + route);
-  console.log(req);
 
   if (req.status === 200) {
     const { data } = await req.json();

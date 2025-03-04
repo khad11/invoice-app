@@ -1,7 +1,7 @@
 import Filter from "./Filter";
 import UnversalSheet from "./UnversalSheet";
 
-function Header({ backendFilterRequestG }) {
+function Header({ count }) {
   return (
     <div className="pb-10 pt-28 md:pl-28">
       <div className="mx-auto flex max-w-4xl items-center justify-between px-4">
@@ -10,9 +10,7 @@ function Header({ backendFilterRequestG }) {
             Invoices
           </h1>
           <span className="text-[12px hidden leading-[15px] text-slate-400 md:block">
-            There are{" "}
-            {`${backendFilterRequestG.length == 0 ? "7" : `${backendFilterRequestG.length}`}`}{" "}
-            total invoices
+            There are {count} total invoices
           </span>
           <span className="text-[12px leading-[15px] text-slate-400 md:hidden">
             7 invoices
