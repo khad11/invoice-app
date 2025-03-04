@@ -3,6 +3,7 @@ import { FaChevronDown } from "react-icons/fa6";
 import { FaChevronUp } from "react-icons/fa";
 import { Button } from "./ui/button";
 import { Check, Users } from "lucide-react";
+import { useStore } from "../lib/zustand";
 
 export default function Filter() {
   const [statuses, setStatuses] = useState({
@@ -12,6 +13,7 @@ export default function Filter() {
   });
   const [open, setOpen] = useState(false);
   const [backendFilterRequest, setBackendFilterRequest] = useState("");
+  const { backendFilterRequestG, setBackendFilterRequestG } = useStore();
 
   useEffect(() => {
     let str = "";
@@ -26,6 +28,10 @@ export default function Filter() {
     }
     setBackendFilterRequest(str);
   }, [statuses]);
+
+  useEffect(() => {
+    setBackendFilterRequestG(backendFilterRequest);
+  }, [backendFilterRequest]);
 
   function handleClick() {
     setOpen(!open);
@@ -54,7 +60,7 @@ export default function Filter() {
       </Button>
 
       {open && (
-        <div className="absolute top-11 z-40 w-full rounded-md p-1 shadow-md">
+        <div className="absolute top-11 z-40 w-full rounded-md bg-gray-50 p-1 shadow-md dark:bg-neutral-900">
           <ul>
             {Object.entries(statuses).map(([status, check], index) => {
               return (
