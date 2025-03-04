@@ -12,9 +12,9 @@ import { Button, buttonVariants } from "./ui/button";
 function UnversalSheet({ children }) {
   return (
     <div className="flex items-center gap-3 rounded-3xl bg-[#7C5DFA] p-2">
-      <PlusCircle className="rounded-full text-white" />
       <Sheet className="">
-        <SheetTrigger className="flex gap-1 text-white">
+        <SheetTrigger className="flex items-center gap-1 text-white">
+          <PlusCircle className="rounded-full text-white" />
           New <span className="hidden md:flex">Invoices</span>
         </SheetTrigger>
         <SheetContent

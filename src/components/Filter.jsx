@@ -50,7 +50,7 @@ export default function Filter() {
   }
 
   return (
-    <div className="relative w-[150px]">
+    <div className="relative w-[130px]">
       <Button className="w-full" onClick={handleClick} variant="ghost">
         <span className="flex gap-2">
           Filter <span className="hidden md:flex">by status</span>
