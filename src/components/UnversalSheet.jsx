@@ -15,7 +15,7 @@ function UnversalSheet({ children }) {
       <PlusCircle className="rounded-full text-white" />
       <Sheet className="">
         <SheetTrigger className="flex gap-1 text-white">
-          New <span className="md:bloock hidden">Invoices</span>
+          New <span className="hidden md:flex">Invoices</span>
         </SheetTrigger>
         <SheetContent
           side="left"
